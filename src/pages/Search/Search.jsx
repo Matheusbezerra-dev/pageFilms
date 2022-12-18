@@ -16,11 +16,9 @@ export default function Search() {
 
   const getSearch = useCallback(async (url) => {
     const response = await fetch(url);
-    const data = await response.json();
-    setTimeout( () => {
-      setTopFilms(data.results);
-      setRemoveLoading(true)
-    }, 1000)
+    const data = await response.json();        
+     setTopFilms(data.results);
+    setRemoveLoading(true)  
   }, []);
 
   useEffect(() => {
