@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'; 
+import { TitleHome, ContainerFilms, ContainerHome } from './HomeStyle';
 import Card from '../../component/Card/Card';
+import Loading from '../../component/Loading&NotFound/Loading';
 
 const moviesUrl = import.meta.env.VITE_API_MOVIE;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -8,27 +10,32 @@ const apiKey = import.meta.env.VITE_API_KEY;
 
 export default function Home() {
   const [topFilms, setTopFilms] = useState([]);
+  const [removeLoading, setRemoveLoading] = useState(false)
   
   const getFilms = useCallback(async (url) => {
     const response = await fetch(url);
     const data = await response.json();
+    setTimeout( () => {
     setTopFilms(data.results);
+    setRemoveLoading(true)
+
+    }, 1000)
   }, []);
 
   useEffect(() => {
     const urlTopRated = `${moviesUrl}?api_key=${apiKey}&language=pt-BR`
     getFilms(urlTopRated)
   },[]);
-  console.log(topFilms)
+  
   return(
     <>
-      <div>
-        <h2>Lista de Filmes:</h2>
-        <div>
-          {topFilms.length === 0 && <p>Carregando...</p>}
+      <ContainerHome>
+        <TitleHome>Lista de Filmes:</TitleHome>
+        <ContainerFilms>
+          {topFilms.length === 0 && !removeLoading && <Loading /> }
           {topFilms.length > 0 && topFilms.map((obj) => <Card key={obj.id} films={obj} />)}
-        </div>
-      </div>
+        </ContainerFilms>
+      </ContainerHome>
     </>
   );
 }
