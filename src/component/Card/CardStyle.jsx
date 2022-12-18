@@ -6,7 +6,9 @@ export const ContainerCard = styled.section`
   margin-bottom: 2.5rem;
   display: flex;
   flex-direction: column;
+  /* flex-wrap: wrap; */
   justify-content: space-between;
+  /* align-items: center; */
   background-color: rgb(18, 18, 18);
   padding: 1rem;
   border-radius: 5px;

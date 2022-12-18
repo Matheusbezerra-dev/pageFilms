@@ -30,11 +30,15 @@ export default function Home() {
   return(
     <>
       <ContainerHome>
-        <TitleHome>Lista de Filmes:</TitleHome>
-        <ContainerFilms>
-          {topFilms.length === 0 && !removeLoading && <Loading /> }
-          {topFilms.length > 0 && topFilms.map((obj) => <Card key={obj.id} films={obj} />)}
-        </ContainerFilms>
+        {!removeLoading ? (<Loading />)
+          : (
+            <>
+              <TitleHome>Lista de Filmes:</TitleHome><ContainerFilms>
+                {topFilms.length > 0 && topFilms.map((obj) => <Card key={obj.id} films={obj} />)}
+              </ContainerFilms>
+            </>
+          )
+        }
       </ContainerHome>
     </>
   );

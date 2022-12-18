@@ -5,7 +5,6 @@ const ContainerLoading = styled.div `
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
 `;
 
 const ImgLoading = styled.img`
