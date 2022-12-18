@@ -26,6 +26,7 @@ export default function Search() {
     setRemoveLoading(false)
     getSearch(searchQuery)
   },[query]);
+  
   return (
     <>
       {!removeLoading ? (<Loading />)

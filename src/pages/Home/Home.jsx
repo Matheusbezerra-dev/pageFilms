@@ -14,12 +14,9 @@ export default function Home() {
   
   const getFilms = useCallback(async (url) => {
     const response = await fetch(url);
-    const data = await response.json();
-    setTimeout( () => {
+    const data = await response.json();    
     setTopFilms(data.results);
-    setRemoveLoading(true)
-
-    }, 1000)
+    setRemoveLoading(true)    
   }, []);
 
   useEffect(() => {
