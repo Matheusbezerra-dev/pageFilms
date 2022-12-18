@@ -1,21 +1,24 @@
 import { Link } from 'react-router-dom';
 import { BiCameraMovie, BiSearchAlt2 } from 'react-icons/bi';
+import { ContainerHeader, TitleH2, FormHeader, SearchInput, ButtonHeader } from './HeaderStyle';
 
 export default function Header() {
   return (
-    <header>
-      <Link to="/">
-        <BiCameraMovie /> Page Films        
-      </Link>
-      <form >
-        <input 
+    <ContainerHeader>
+      <TitleH2>
+        <Link to="/">
+          <BiCameraMovie /> Page Films        
+        </Link>
+      </TitleH2>
+      <FormHeader >
+        <SearchInput 
           type="text"
           placeholder="Qual o nome do Filme?"
         />
-        <button type="submit">
+        <ButtonHeader type="submit">
           <BiSearchAlt2 />
-        </button>
-      </form>
-    </header>
+        </ButtonHeader>
+      </FormHeader>
+    </ContainerHeader>
   );
 }
