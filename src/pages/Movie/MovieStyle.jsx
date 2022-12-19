@@ -32,5 +32,23 @@ export const ContainerMovie = styled.section`
     justify-content: center;
     gap: 0.4rem;
   }
+  @media (max-width: 600px) {
+    padding: 2rem;
+  }
+`;
 
+export const Containerinfo = styled.div`
+  margin-bottom: 1rem;
+  
+`;
+
+export const TitleH3 = styled.h3`
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+export const ContainerDesc = styled.p`
+  line-height: 1.4rem;
 `;

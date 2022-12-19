@@ -29,7 +29,7 @@ export default function Home() {
       {!removeLoading ? (<Loading />)      
         : (
           <ContainerHome>            
-            <TitleHome>Lista de Filmes:</TitleHome>
+            <TitleHome>Lista de Filmes</TitleHome>
             <ContainerFilms>
               {topFilms.length > 0 && topFilms.map((obj) => <Card key={obj.id} films={obj} />)}
             </ContainerFilms>            

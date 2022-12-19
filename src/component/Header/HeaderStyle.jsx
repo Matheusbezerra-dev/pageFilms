@@ -12,6 +12,9 @@ export const TitleH2 = styled.h2`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  @media (max-width: 450px) {
+    font-size: 20px;
+  }
 `;
 
 export const FormHeader = styled.form`
@@ -23,6 +26,9 @@ export const SearchInput = styled.input`
   padding: 0.2rem 0.8rem;
   border-radius: 5px;
   border: 1px solid rgb(18, 18, 18);
+  @media (max-width: 450px) {
+    width: 120px;
+  }
 `;
 
 export const ButtonHeader = styled.button`

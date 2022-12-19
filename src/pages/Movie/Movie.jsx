@@ -9,7 +9,9 @@ import{
 import Card from '../../component/Card/Card'
 import {
   ContainerMovie,
-
+  Containerinfo,
+  TitleH3,
+  ContainerDesc,
 } from './MovieStyle';
 
 const moviesUrl = import.meta.env.VITE_API;
@@ -43,30 +45,30 @@ export default function Movie() {
         <>
           <Card films={films} showLink={false}/>
           <p>{films.tagline}</p>
-          <div>
-            <h3>
+          <Containerinfo>
+            <TitleH3>
               <BsWallet2 /> Orçamento:
-            </h3>
+            </TitleH3>
             <p>{formated(films.budget)}</p>
-          </div>
-          <div>
-            <h3>
+          </Containerinfo>
+          <Containerinfo>
+            <TitleH3>
               <BsGraphUp /> Receita:
-            </h3>
+            </TitleH3>
             <p>{formated(films.revenue)}</p>
-          </div>
-          <div>
-            <h3>
+          </Containerinfo>
+          <Containerinfo>
+            <TitleH3>
               <BsHourglassSplit /> Duração:
-            </h3>
+            </TitleH3>
             <p>{films.runtime}</p>
-          </div>
-          <div>
-            <h3>
+          </Containerinfo>
+          <Containerinfo>
+            <TitleH3>
               <BsFillFileEarmarkTextFill /> Descrição:
-            </h3>
-            <p>{films.overview}</p>
-          </div>
+            </TitleH3>
+            <ContainerDesc>{films.overview}</ContainerDesc>
+          </Containerinfo>
         </>
       )}
     </ContainerMovie>

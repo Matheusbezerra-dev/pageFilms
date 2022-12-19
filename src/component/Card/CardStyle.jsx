@@ -30,9 +30,13 @@ export const ContainerCard = styled.section`
     font-weight: bold;
     box-shadow: 1px 1px 5px 1px rgb(0, 0, 0);
     :hover {
-    background-color: transparent;
-    color: rgb(255, 119, 5);
+      background-color: transparent;
+      color: rgb(255, 119, 5);
+    }
   }
+
+  @media (max-width: 600px) {
+    width: 100%;
   }
 `;
 
@@ -41,4 +45,5 @@ export const ImgCard = styled.img`
   border-radius: 2px;
   box-shadow: 1px 1px 5px 2px rgb(0, 0, 0);
 `;
+
 
