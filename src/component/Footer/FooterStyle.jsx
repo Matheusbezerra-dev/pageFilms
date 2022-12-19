@@ -6,8 +6,11 @@ export const ContainerFooter = styled.footer`
   padding: 1rem 2rem;
   align-items: center;
   background-color: rgb(18, 18, 18);
-  position: relative;
+  /* position: fixed; */
+  width: 100%;
   bottom: 0;
+  left: 0;
+  
 `;
 
 export const ImgFooter = styled.img`
