@@ -3,6 +3,7 @@ import { TitleHome, ContainerFilms, ContainerHome } from './HomeStyle';
 import Card from '../../component/Card/Card';
 import Loading from '../../component/Loading&NotFound/Loading';
 import PageFilmsContext from '../../context/PageFilmsContext';
+import Pagination from '../../component/Pagination/Pagination';
 
 const moviesUrl = import.meta.env.VITE_API_MOVIE;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -15,13 +16,16 @@ export default function Home() {
     fetchFilms,
     removeLoading,
     setRemoveLoading,
+    page,
+    totalPage
   } = useContext(PageFilmsContext);
     
   useEffect(() => {
-    const urlTopRated = `${moviesUrl}?api_key=${apiKey}&language=pt-BR&total_results`
+    const urlTopRated = `${moviesUrl}?api_key=${apiKey}&language=pt-BR&total_results&page=${page}`
+    setRemoveLoading(false)
     fetchFilms(urlTopRated)    
     setRemoveLoading(true)    
-  },[]);
+  },[fetchFilms, page]);
 
   return(
     <>
@@ -31,7 +35,8 @@ export default function Home() {
             <TitleHome>Lista de Filmes</TitleHome>
             <ContainerFilms>
               {films.length > 0 && films.map((obj) => <Card key={obj.id} films={obj} />)}
-            </ContainerFilms>            
+            </ContainerFilms>
+            {totalPage > 1 && <Pagination />}         
           </ContainerHome>  
         )
       }      

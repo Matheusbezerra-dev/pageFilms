@@ -7,16 +7,17 @@ const apiKey = import.meta.env.VITE_API_KEY;
 export default function PageFilmsProvider({children}) {
   const [films, setFilms] = useState([]);
   const [removeLoading, setRemoveLoading] = useState(false);
-  const [itensPage, setItensPage] = useState(20);
-  const [currentPage, setCurrentPage] =  useState(0);
-  
+  const [page, setPage] =  useState(1);
+  const [totalPage, setTotalPage] = useState(null);
+
 
   const fetchFilms = useCallback(async (url) => {
     const response = await fetch(url);
     const data = await response.json(); 
     console.log(data);
-    const { results, total_pages, total_results} = data
+    const { results, total_pages} = data
     setFilms(results);
+    setTotalPage(total_pages)
   }, []);
 
   const filmsContext = useMemo( () => ({
@@ -24,11 +25,19 @@ export default function PageFilmsProvider({children}) {
     fetchFilms,
     removeLoading,
     setRemoveLoading,
+    page,
+    setPage,
+    totalPage,
+    setTotalPage,
   }), [
     films,
     fetchFilms,
     removeLoading,
     setRemoveLoading,
+    page,
+    setPage,
+    totalPage,
+    setTotalPage,
   ]);
 
   return (

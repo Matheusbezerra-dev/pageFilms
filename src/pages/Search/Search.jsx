@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import Card from '../../component/Card/Card';
 import { QueryText, ContainerSeach, TitleSeach, ContainerFilms } from './SearchStyle';
 import PageFilmsContext from '../../context/PageFilmsContext';
+import Pagination from '../../component/Pagination/Pagination';
 
 const searchUrl = import.meta.env.VITE_SEARCH;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -14,17 +15,19 @@ export default function Search() {
     fetchFilms,
     removeLoading,
     setRemoveLoading,
+    totalPage,
+    page
   } = useContext(PageFilmsContext);
   const [searchParams] = useSearchParams();
   
   const query = searchParams.get("q")     
     
   useEffect(() => {
-      const searchQuery = `${searchUrl}?api_key=${apiKey}&query=${query}&language=pt-BR&`
+      const searchQuery = `${searchUrl}?api_key=${apiKey}&query=${query}&language=pt-BR&page=${page}`
     setRemoveLoading(false)
     fetchFilms(searchQuery)
     setRemoveLoading(true)
-  },[query]);
+  },[query,page,fetchFilms]);
   
   return (
     <>
@@ -35,6 +38,7 @@ export default function Search() {
             <ContainerFilms>
               {films.length > 0 && films.map((obj) => <Card key={obj.id} films={obj} />)}
             </ContainerFilms>
+            {totalPage > 1 && <Pagination />}  
           </ContainerSeach>
         )
       }
