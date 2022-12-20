@@ -16,7 +16,8 @@ export default function Search() {
     removeLoading,
     setRemoveLoading,
     totalPage,
-    page
+    page,
+    setPage,
   } = useContext(PageFilmsContext);
   const [searchParams] = useSearchParams();
   
