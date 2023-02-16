@@ -17,9 +17,10 @@ export default function PageFilmsProvider({children}) {
     console.log(data);
     const { results, total_pages} = data
     setFilms(results);
+    setRemoveLoading(true)
     setTotalPage(total_pages)
   }, []);
-
+  console.log(films);
   const filmsContext = useMemo( () => ({
     films,
     fetchFilms,

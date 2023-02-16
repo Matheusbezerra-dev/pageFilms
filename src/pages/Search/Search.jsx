@@ -24,7 +24,7 @@ export default function Search() {
   const query = searchParams.get("q")     
     
   useEffect(() => {
-      const searchQuery = `${searchUrl}?api_key=${apiKey}&query=${query}&language=pt-BR&page=${page}`
+    const searchQuery = `${searchUrl}?api_key=${apiKey}&query=${query}&language=pt-BR&page=${page}`
     setRemoveLoading(false)
     fetchFilms(searchQuery)
     setRemoveLoading(true)
@@ -37,7 +37,7 @@ export default function Search() {
           <ContainerSeach>
             <TitleSeach>Resultados para <QueryText>{query}</QueryText></TitleSeach>
             <ContainerFilms>
-              {films.length > 0 && films.map((obj) => <Card key={obj.id} films={obj} />)}
+            {films ? (films.length > 0 && films.map((obj) => <Card key={obj.id} films={obj} />)) : (<p>Nenhum resultado encontrado.</p>)}
             </ContainerFilms>
             {totalPage > 1 && <Pagination />}  
           </ContainerSeach>

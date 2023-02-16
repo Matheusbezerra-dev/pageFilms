@@ -14,9 +14,6 @@ export const TitleHome = styled.h2`
   margin: 2rem 0 1rem;
 `;
 
-// export const QueryText = styled.h2`
-// `;
-
 export const ContainerFilms = styled.div`
   display: flex;
   flex-wrap: wrap;
